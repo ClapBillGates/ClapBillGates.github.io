@@ -106,8 +106,17 @@
         Till the end of the year, drastic gains in membership and the strengthening of the Empire's core allowed for stability and glimpses towards new peaks.
         </div>
      </div>
-    <iframe width="1040" height="360" 
-            src="https://www.youtube.com/embed/gNvRnqqpoD4?autoplay=1&loop=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    <iframe 
+            src="https://www.youtube.com/embed/gNvRnqqpoD4" allow="autoplay" id="video">
     </iframe>
+<script>
+  const video = document.getElementById('video');
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      video.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+    }
+  });
+  observer.observe(video);
+</script>
 </body>
 </html>
